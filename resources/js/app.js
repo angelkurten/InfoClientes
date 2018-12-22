@@ -22,8 +22,11 @@ window.Vue = require('vue');
 
 import VeeValidate from 'vee-validate';
 import VeeValidateLaravel from 'vee-validate-laravel';
+import BootstrapVue from 'bootstrap-vue'
+
 Vue.use(VeeValidate);
 Vue.use(VeeValidateLaravel);
+Vue.use(BootstrapVue);
 
 Vue.prototype.$setErrorsFromResponse = function(errorResponse) {
 
@@ -51,11 +54,13 @@ Vue.prototype.$setErrorsFromResponse = function(errorResponse) {
     });
 };
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('container-client-component', require('./components/clients/ContainerComponent.vue').default);
 Vue.component('select2', require('./components/select.vue').default);
+Vue.component('container-client-component', require('./components/clients/ContainerComponent.vue').default);
 Vue.component('list-clients-component', require('./components/clients/ListComponent.vue').default);
 Vue.component('new-clients-component', require('./components/clients/NewComponent.vue').default);
+Vue.component('container-visits-component', require('./components/visits/ContainerComponent.vue').default);
+Vue.component('list-visits-component', require('./components/visits/ListComponent.vue').default);
+Vue.component('new-visits-component', require('./components/visits/NewComponent.vue').default);
 
 
 /**

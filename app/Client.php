@@ -15,6 +15,12 @@ class Client extends Model
     {
         return $this->belongsTo(City::class);
     }
+
+    public function visits()
+    {
+        return $this->hasMany(Visit::class);
+    }
+
     public function getNitAttribute()
     {
         return decrypt($this->attributes['nit']);

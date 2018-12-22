@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Client;
 use App\Http\Requests\Clients\StoreRequest;
+use App\Http\Requests\Clients\UpdateRequest;
 use App\Http\Resources\ClientResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -29,7 +30,6 @@ class ClientsController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        dd($request->all());
         $client = new Client($request->all());
         $client->save();
         $client = Client::find($client->id);
@@ -39,11 +39,11 @@ class ClientsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param UpdateRequest $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $client = Client::find($id);
         $client->update($request->all());
@@ -61,5 +61,7 @@ class ClientsController extends Controller
     {
         $client = Client::find($id);
         $client->delete();
+
+        return response()->json(true);
     }
 }

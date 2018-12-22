@@ -5,7 +5,7 @@ namespace App\Http\Requests\Clients;
 use App\Http\Requests\Request as FormRequest;
 use App\Rules\IsMinor;
 
-class StoreRequest extends FormRequest
+class UpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

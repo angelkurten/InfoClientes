@@ -18,6 +18,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('clients', 'ClientsController');
+Route::apiResource('visits', 'VisitController');
 Route::apiResource('countries', 'CountryController')->only('index');
+Route::apiResource('sellers', 'SellerController')->only('index');
 Route::apiResource('states', 'StateController')->only('show');
 Route::apiResource('cities', 'CityController')->only('show');

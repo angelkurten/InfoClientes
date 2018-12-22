@@ -45,9 +45,10 @@
             <span v-else>{{ client.percentage_visits }}</span>
         </td>
         <td>
-            <button  v-if="!editMode" v-on:click="onClickEdit()" style="display: inline-block" class="btn btn-x btn-info"><i class="material-icons md-18">edit</i></button>
-            <button  v-else v-on:click="onClickUpdate()" style="display: inline-block" class="btn btn-x btn-success"><i class="material-icons md-18">save</i></button>
-            <button  v-on:click="onClickDelete()" style="display: inline-block" class="btn btn-x btn-danger"><i class="material-icons md-18">delete</i></button>
+            <a :href="'clients/' + client.id" style="display: inline-block" class="btn btn-x btn-dark" v-b-tooltip.hover title="Ver visitas"><i class="material-icons md-18">directions_bike</i></a>
+            <button  v-if="!editMode" v-on:click="onClickEdit()" style="display: inline-block" class="btn btn-x btn-info" v-b-tooltip.hover title="Editar cliente"><i class="material-icons md-18">edit</i></button>
+            <button  v-else v-on:click="onClickUpdate()" style="display: inline-block" class="btn btn-x btn-success" v-b-tooltip.hover title="Guardar cambios"><i class="material-icons md-18">save</i></button>
+            <button  v-on:click="onClickDelete()" style="display: inline-block" class="btn btn-x btn-danger" v-b-tooltip.hover title="Eliminar cliente"><i class="material-icons md-18">delete</i></button>
         </td>
     </tr>
 </template>

@@ -10,4 +10,19 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+
+    /**
+     * Method for generate one new model and get with relations
+     * @param $data
+     * @param $model
+     * @return mixed
+     */
+    public function createAndGet($data, $model)
+    {
+        $obj = new $model($data);
+        $obj->save();
+        $obj = $model::find($obj->id);
+        return $obj;
+    }
 }
