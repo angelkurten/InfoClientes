@@ -14,5 +14,11 @@ class SellersTableSeeder extends Seeder
         \App\Seller::create([
             'name' => 'Vendedor 1',
         ]);
+        \App\Seller::create([
+            'name' => 'Vendedor 2',
+        ]);
+        \App\Seller::create([
+            'name' => 'Vendedor 3',
+        ]);
     }
 }

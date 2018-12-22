@@ -116431,7 +116431,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\nModuleBuildError: Module build failed (from ./node_modules/postcss-loader/src/index.js):\nError: EPERM: operation not permitted, open 'C:\\Users\\Angel\\Code\\InfoClientes\\node_modules\\bootstrap\\dist\\css\\bootstrap.css'\n    at runLoaders (C:\\Users\\Angel\\Code\\InfoClientes\\node_modules\\webpack\\lib\\NormalModule.js:301:20)\n    at C:\\Users\\Angel\\Code\\InfoClientes\\node_modules\\loader-runner\\lib\\LoaderRunner.js:364:11\n    at C:\\Users\\Angel\\Code\\InfoClientes\\node_modules\\loader-runner\\lib\\LoaderRunner.js:200:19\n    at process.nextTick (C:\\Users\\Angel\\Code\\InfoClientes\\node_modules\\enhanced-resolve\\lib\\CachedInputFileSystem.js:73:15)\n    at _combinedTickCallback (internal/process/next_tick.js:67:7)\n    at process._tickCallback (internal/process/next_tick.js:98:9)");
 
 /***/ }),
 
