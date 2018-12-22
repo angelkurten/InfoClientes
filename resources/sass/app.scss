@@ -1,0 +1,23 @@
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+.navbar-laravel {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.material-icons.md-18 { font-size: 18px; }
+
+.btn-x{
+  padding: 0.1rem 0.2rem;
+  font-size: 0.7875rem;
+  line-height: 1;
+  border-radius: 0.2rem;
+}
