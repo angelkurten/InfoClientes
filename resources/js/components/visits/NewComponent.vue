@@ -1,6 +1,6 @@
 <template>
     <div class="card">
-        <div class="card-header">Nueva visita</div>
+        <div class="card-header">Nueva visita | <button class="btn btn-danger btn-x" v-on:click="hidePanel()"><i class="material-icons">visibility_off</i></button></div>
         <div class="card-body">
             <form action="" v-on:submit.prevent="newVisit()" class="form form-horizontal">
                 <div class="form-group" v-bind:class="{'has-error' : errors.has('visit_at')}">
@@ -75,6 +75,10 @@
 
             updateValueVisit(){
                 this.value_visit = this.value_net * (this.client.percentage_visits / 100);
+            },
+
+            hidePanel(){
+                this.$emit('hide', true);
             }
         }
     }

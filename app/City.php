@@ -13,4 +13,9 @@ class City extends Model
     {
         return $this->belongsTo(State::class);
     }
+
+    public function visits()
+    {
+            return $this->hasManyThrough(Visit::class, Client::class)->addSelect(['visits.id', 'visits.visit_at']);
+    }
 }

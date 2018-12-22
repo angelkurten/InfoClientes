@@ -1,6 +1,6 @@
 <template>
     <div class="card">
-        <div class="card-header">Nuevo cliente</div>
+        <div class="card-header">Nuevo cliente | <button class="btn btn-danger btn-x" v-on:click="hidePanel()"><i class="material-icons">visibility_off</i></button></div>
         <div class="card-body">
             <form action="" v-on:submit.prevent="newClient()" class="form form-horizontal">
                 <div class="form-group" v-bind:class="{'has-error' : errors.has('nit')}">
@@ -102,6 +102,10 @@
                 axios.get('/api/cities/' + this.state_id).then((response) => {
                     this.cities = response.data;
                 });
+            },
+
+            hidePanel(){
+                this.$emit('hide', true);
             },
 
             newClient(){

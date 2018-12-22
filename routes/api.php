@@ -22,4 +22,4 @@ Route::apiResource('visits', 'VisitController');
 Route::apiResource('countries', 'CountryController')->only('index');
 Route::apiResource('sellers', 'SellerController')->only('index');
 Route::apiResource('states', 'StateController')->only('show');
-Route::apiResource('cities', 'CityController')->only('show');
+Route::apiResource('cities', 'CityController')->only(['show', 'index']);

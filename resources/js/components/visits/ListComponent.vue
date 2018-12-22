@@ -75,17 +75,6 @@
                     this.$emit('update', response.data);
                 });
             },
-            getStates(){
-                axios.get('/api/states/' + this.country_id).then((response) => {
-                    this.states = response.data;
-                });
-            },
-
-            getCities(){
-                axios.get('/api/cities/' + this.state_id).then((response) => {
-                    this.cities = response.data;
-                });
-            },
             updateValueVisit(){
                 this.visit.value_visit = this.visit.value_net * (this.visit.client.percentage_visits / 100);
             }

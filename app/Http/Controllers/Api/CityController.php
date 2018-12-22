@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\DB;
 
 class CityController extends Controller
 {
+
+    public function index(){
+        $cities = City::withCount(['visits'])->get();
+
+        return response()->json($cities);
+    }
     /**
      * Display a listing of the resource.
      *

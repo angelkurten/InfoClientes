@@ -22,7 +22,7 @@ window.Vue = require('vue');
 
 import VeeValidate from 'vee-validate';
 import VeeValidateLaravel from 'vee-validate-laravel';
-import BootstrapVue from 'bootstrap-vue'
+import BootstrapVue from 'bootstrap-vue';
 
 Vue.use(VeeValidate);
 Vue.use(VeeValidateLaravel);
@@ -61,6 +61,8 @@ Vue.component('new-clients-component', require('./components/clients/NewComponen
 Vue.component('container-visits-component', require('./components/visits/ContainerComponent.vue').default);
 Vue.component('list-visits-component', require('./components/visits/ListComponent.vue').default);
 Vue.component('new-visits-component', require('./components/visits/NewComponent.vue').default);
+Vue.component('pie-chart', require('./components/PieChart.vue').default);
+Vue.component('line-chart', require('./components/LineChart.vue').default);
 
 
 /**
