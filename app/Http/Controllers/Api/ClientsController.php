@@ -10,6 +10,12 @@ use App\Http\Controllers\Controller;
 
 class ClientsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->model = Client::class;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -30,7 +36,7 @@ class ClientsController extends Controller
     public function store(StoreRequest $request)
     {
 
-        $client =  $this->createAndGet($request->all(), Client::class);
+        $client =  $this->createAndGet($request->all());
         return response()->json($client);
     }
 

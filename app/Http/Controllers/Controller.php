@@ -11,18 +11,18 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-
+    protected $model;
     /**
      * Method for generate one new model and get with relations
      * @param $data
      * @param $model
      * @return mixed
      */
-    public function createAndGet($data, $model)
+    public function createAndGet($data)
     {
-        $obj = new $model($data);
+        $obj = new $this->model($data);
         $obj->save();
-        $obj = $model::find($obj->id);
+        $obj = $this->model::find($obj->id);
         return $obj;
     }
 }

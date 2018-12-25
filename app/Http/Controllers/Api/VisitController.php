@@ -7,12 +7,17 @@ use App\Client;
 use App\Http\Requests\Visit\StoreRequest;
 use App\Http\Requests\Visit\UpdateRequest;
 use App\Visit;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 
 class VisitController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->model = Visit::class;
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -24,7 +29,7 @@ class VisitController extends Controller
         DB::beginTransaction();
 
         try{
-            $visit = $this->createAndGet($request->all(), Visit::class);
+            $visit = $this->createAndGet($request->all());
             if($visit->client->balance_quota < $visit->value_visit){
                 throw new \Exception('No tiene cupo disponible para esta visita');
             } else {
