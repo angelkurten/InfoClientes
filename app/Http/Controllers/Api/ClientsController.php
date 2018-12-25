@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Client;
 use App\Http\Requests\Clients\StoreRequest;
 use App\Http\Requests\Clients\UpdateRequest;
-use App\Http\Resources\ClientResource;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -30,9 +29,8 @@ class ClientsController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        $client = new Client($request->all());
-        $client->save();
-        $client = Client::find($client->id);
+
+        $client =  $this->createAndGet($request->all(), Client::class);
         return response()->json($client);
     }
 
