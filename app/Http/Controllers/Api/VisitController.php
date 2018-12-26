@@ -26,9 +26,8 @@ class VisitController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        DB::beginTransaction();
 
-        try{
+        $result = $this->executeTransaction(function () use ($request){
             $visit = $this->createAndGet($request->all());
             if($visit->client->balance_quota < $visit->value_visit){
                 throw new \Exception('No tiene cupo disponible para esta visita');
@@ -36,14 +35,9 @@ class VisitController extends Controller
                 $visit->client->balance_quota -= $visit->value_visit;
                 $visit->client->save();
             }
-            DB::commit();
-            return response()->json($visit);
-        } catch (\Exception $e) {
-            DB::rollback();
-            DB::commit();
-            return response()->json(['errors'=>[$e->getMessage()]]);
-        }
-
+            return $visit;
+        });
+        return $result;
     }
 
     /**
@@ -68,26 +62,20 @@ class VisitController extends Controller
     public function update(UpdateRequest $request, Visit $visit)
     {
         $difference = $visit->value_visit - $request->get('value_visit');
-        $visit->update($request->all());
 
-        DB::beginTransaction();
-
-        try{
+        $result = $this->executeTransaction(function () use ($request, $difference, $visit) {
+            $visit->update($request->all());
             if($visit->client->balance_quota < $difference){
                 throw new \Exception('No tiene cupo disponible para hacer este cambio');
             } else {
                 $visit->client->balance_quota += $difference;
                 $visit->client->save();
             }
-            DB::commit();
-            return response()->json($visit);
-        } catch (\Exception $e) {
-            DB::rollback();
-            DB::commit();
-            return response()->json(['errors'=>[$e->getMessage()]]);
-        }
 
-        return response()->json($visit);
+            return $visit;
+        });
+
+        return $result;
     }
 
     /**
@@ -102,5 +90,20 @@ class VisitController extends Controller
         $visit->client->balance_quota += $visit->value_visit;
         $visit->client->save();
         $visit->delete();
+    }
+
+    private function executeTransaction($callback)
+    {
+        DB::beginTransaction();
+
+        try{
+            $visit = $callback();
+            DB::commit();
+            return response()->json($visit);
+        } catch (\Exception $e) {
+            DB::rollback();
+            DB::commit();
+            return response()->json(['errors'=>[$e->getMessage()]]);
+        }
     }
 }
